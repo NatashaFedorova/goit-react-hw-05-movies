@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Outlet } from 'react-router-dom';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import AboutMovie from 'components/AboutMovie';
 import AdditionalInfo from 'components/AdditionalInfo';
@@ -9,10 +9,10 @@ import { Box, StyledLink, Icon } from './MovieDetails.styled';
 const MovieDetails = () => {
   const { movieId } = useParams();
   const [film, setFilm] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
 
   useEffect(() => {
-    setLoading(true);
     const getFilmByRequest = async () => {
       try {
         const response = await fetchFilmsByRequest(movieId);
@@ -23,8 +23,6 @@ const MovieDetails = () => {
         setFilm(response.data);
       } catch {
         toast.error('Oops, something went wrong, be kind, change your side');
-      } finally {
-        setLoading(false);
       }
     };
     getFilmByRequest();
@@ -32,11 +30,10 @@ const MovieDetails = () => {
 
   return (
     <Box>
-      <StyledLink to="/">
+      <StyledLink to={backLinkHref}>
         <Icon />
         Go back
       </StyledLink>
-      {loading && <p>loading...</p>}
       <AboutMovie film={film} />
       <AdditionalInfo />
       <Outlet />

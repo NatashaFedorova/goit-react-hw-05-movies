@@ -1,14 +1,16 @@
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByTitle } from 'api';
 import SearchForm from 'components/SearchForm';
-import { useState, useEffect } from 'react';
-import { List, Item, StyledLink } from './SearchForMoviesByTitle.styled';
+import MoviesByTitle from 'components/MoviesByTitle';
 
 const SearchForMoviesByTitle = () => {
-  const [value, setValue] = useState('');
   const [movies, setMovies] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const value = searchParams.get('value');
 
   useEffect(() => {
-    if (value === '') {
+    if (value === '' || !value) {
       return;
     }
     const getMovies = async () => {
@@ -22,20 +24,14 @@ const SearchForMoviesByTitle = () => {
     getMovies();
   }, [value]);
 
+  const changeValueInput = value => {
+    setSearchParams({ value });
+  };
+
   return (
     <>
-      <SearchForm onSubmit={setValue} />
-      <List>
-        {movies.map(film => {
-          return (
-            <Item key={film.id}>
-              <StyledLink to={`${film.id}`}>
-                {film['original_title']}
-              </StyledLink>
-            </Item>
-          );
-        })}
-      </List>
+      <SearchForm onSubmit={changeValueInput} value={value} />
+      <MoviesByTitle movies={movies} />
     </>
   );
 };
