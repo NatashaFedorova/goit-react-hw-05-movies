@@ -12,3 +12,13 @@ export const fetchFilmsByRequest = id => {
   const response = axios.get(`${BASE_URL}/movie/${id}?api_key=${KEY}`);
   return response;
 };
+
+export const fetchCastByRequest = id => {
+  const response = axios.get(`${BASE_URL}/movie/${id}/credits?api_key=${KEY}`);
+  return response;
+};
+
+export const fetchReviewsByRequest = id => {
+  const response = axios.get(`${BASE_URL}/movie/${id}/reviews?api_key=${KEY}`);
+  return response;
+};

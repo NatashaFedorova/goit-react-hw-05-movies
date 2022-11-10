@@ -2,7 +2,7 @@ export const theme = Object.freeze({
   colors: {
     light: '#ffffff',
     dark: '#303030',
-    accent: '#a22f2f',
+    accent: '#ba1818',
     error: '#ff0000',
   },
   spacing: value => `${4 * value}px`,

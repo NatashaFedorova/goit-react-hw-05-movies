@@ -4,7 +4,7 @@ import { Box, TitlePage } from './Home.styled';
 const Home = () => {
   return (
     <Box>
-      <TitlePage>Popular films</TitlePage>
+      <TitlePage>Trending today</TitlePage>
       <PopularFilmsList />
     </Box>
   );

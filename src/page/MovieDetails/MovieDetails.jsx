@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchFilmsByRequest } from '../api';
+import { useParams, Outlet } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import AboutMovie from 'components/AboutMovie';
+import AdditionalInfo from 'components/AdditionalInfo';
+import { fetchFilmsByRequest } from '../../api';
+import { Box, StyledLink, Icon } from './MovieDetails.styled';
 
 const MovieDetails = () => {
-  console.log('xfghxfghxfg');
   const { movieId } = useParams();
-  console.log(movieId);
-  const [film, setFilm] = useState([]);
+  const [film, setFilm] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -15,7 +16,6 @@ const MovieDetails = () => {
     const getFilmByRequest = async () => {
       try {
         const response = await fetchFilmsByRequest(movieId);
-        console.log(response.data['original_title']);
         if (!response.data) {
           toast.error('Oops, something went wrong, be kind, change your side');
           return;
@@ -29,25 +29,18 @@ const MovieDetails = () => {
     };
     getFilmByRequest();
   }, [movieId]);
-  console.log(film);
 
   return (
-    <>
+    <Box>
+      <StyledLink to="/">
+        <Icon />
+        Go back
+      </StyledLink>
       {loading && <p>loading...</p>}
-      <h1>
-        {film['original_title']}
-        <span>({film['release_date']})</span>
-      </h1>
-      <p>User score: ... %</p>
-      <p>Overview</p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, illum
-        dicta. Quis eaque quam ullam cum necessitatibus, perspiciatis numquam a
-        consequuntur ipsam tenetur ea ex, nostrum, quod adipisci qui labore?
-      </p>
-      <p>Genres</p>
-      <p>Genres list</p>
-    </>
+      <AboutMovie film={film} />
+      <AdditionalInfo />
+      <Outlet />
+    </Box>
   );
 };
 

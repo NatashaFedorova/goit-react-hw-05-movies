@@ -1,14 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { BaseList, BaseItem } from '../../components/constans/BaseStyle.styled';
 
-export const List = styled.ul`
-  padding-left: ${props => props.theme.spacing(6)};
-  list-style: square;
-`;
+export const List = styled(BaseList)``;
 
-export const Item = styled.li`
-  margin-bottom: ${props => props.theme.spacing(2)};
-`;
+export const Item = styled(BaseItem)``;
 
 export const StyledLink = styled(Link)`
   font-size: ${props => props.theme.fontSizes.medium};
