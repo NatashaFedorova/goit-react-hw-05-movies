@@ -13,6 +13,7 @@ export const Title = styled.h3`
 export const List = styled(BaseList)``;
 
 export const Item = styled(BaseItem)`
+  margin-top: ${props => props.theme.spacing(8)};
   margin-bottom: ${props => props.theme.spacing(8)};
 `;
 export const Text = styled(BaseText)`

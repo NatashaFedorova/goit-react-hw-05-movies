@@ -50,7 +50,7 @@ export const Icon = styled(ImSearch)`
 
 export const Error = styled.p`
   position: absolute;
-  bottom: 86%;
-  left: 45%;
+  bottom: 83%;
+  left: 44%;
   color: ${props => props.theme.colors.error};
 `;

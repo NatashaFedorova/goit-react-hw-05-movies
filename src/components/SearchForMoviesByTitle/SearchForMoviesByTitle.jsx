@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMoviesByTitle } from 'api';
 import SearchForm from 'components/SearchForm';
 import MoviesByTitle from 'components/MoviesByTitle';
+import { Loader } from 'components/constans/BaseStyle.styled';
 
 const SearchForMoviesByTitle = () => {
   const [movies, setMovies] = useState([]);
@@ -31,7 +32,9 @@ const SearchForMoviesByTitle = () => {
   return (
     <>
       <SearchForm onSubmit={changeValueInput} value={value} />
-      <MoviesByTitle movies={movies} />
+      <Suspense fallback={<Loader />}>
+        <MoviesByTitle movies={movies} />
+      </Suspense>
     </>
   );
 };

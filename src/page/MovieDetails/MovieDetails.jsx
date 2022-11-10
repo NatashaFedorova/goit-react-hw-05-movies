@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useParams, Outlet, useLocation } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import AboutMovie from 'components/AboutMovie';
 import AdditionalInfo from 'components/AdditionalInfo';
 import { fetchFilmsByRequest } from '../../api';
 import { Box, StyledLink, Icon } from './MovieDetails.styled';
+import { Loader } from 'components/constans/BaseStyle.styled';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -36,7 +37,9 @@ const MovieDetails = () => {
       </StyledLink>
       <AboutMovie film={film} />
       <AdditionalInfo />
-      <Outlet />
+      <Suspense fallback={<Loader />}>
+        <Outlet />
+      </Suspense>
     </Box>
   );
 };
