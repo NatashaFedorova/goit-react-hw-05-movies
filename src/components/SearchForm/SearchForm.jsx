@@ -14,7 +14,7 @@ const SearchForm = ({ onSubmit, value }) => {
   };
   return (
     <Formik
-      initialValues={{ value }}
+      initialValues={{ value: value ?? '' }}
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
