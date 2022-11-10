@@ -13,6 +13,13 @@ export const fetchFilmsByRequest = id => {
   return response;
 };
 
+export const fetchMoviesByTitle = value => {
+  const response = axios.get(
+    `${BASE_URL}/search/movie?api_key=${KEY}&query=${value}`
+  );
+  return response;
+};
+
 export const fetchCastByRequest = id => {
   const response = axios.get(`${BASE_URL}/movie/${id}/credits?api_key=${KEY}`);
   return response;

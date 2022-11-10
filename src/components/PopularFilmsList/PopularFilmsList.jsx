@@ -5,10 +5,8 @@ import { List, Item, StyledLink } from './PopularFilmsList.styled';
 
 const PopularFilmsList = () => {
   const [popularFilms, setPopularFilms] = useState([]);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
     const getPopularFilms = async () => {
       try {
         const response = await fetchPopularFilms();
@@ -20,16 +18,13 @@ const PopularFilmsList = () => {
         setPopularFilms(films);
       } catch {
         toast.error('Oops, something went wrong, be kind, change your side');
-      } finally {
-        setLoading(false);
       }
     };
     getPopularFilms();
   }, []);
 
   return (
-    <div>
-      {loading && <p>loading...</p>}
+    <>
       <List>
         {popularFilms.map(film => {
           return (
@@ -41,7 +36,7 @@ const PopularFilmsList = () => {
           );
         })}
       </List>
-    </div>
+    </>
   );
 };
 

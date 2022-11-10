@@ -1,5 +1,12 @@
+import SearchForMoviesByTitle from 'components/SearchForMoviesByTitle';
+import { Box } from './Movies.styled';
+
 const Movies = () => {
-  return <p>Movies page</p>;
+  return (
+    <Box>
+      <SearchForMoviesByTitle />
+    </Box>
+  );
 };
 
 export default Movies;
