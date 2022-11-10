@@ -11,7 +11,9 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [film, setFilm] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = location.state?.from;
+  console.log('location', location.state?.from);
+  console.log('backLinkHref', backLinkHref);
 
   useEffect(() => {
     const getFilmByRequest = async () => {
@@ -31,7 +33,7 @@ const MovieDetails = () => {
 
   return (
     <Box>
-      <StyledLink to={backLinkHref}>
+      <StyledLink to={location.state?.from}>
         <Icon />
         Go back
       </StyledLink>

@@ -7,14 +7,14 @@ const schema = yup.object().shape({
   value: yup.string().trim().required(),
 });
 
-const SearchForm = ({ onSubmit }) => {
+const SearchForm = ({ onSubmit, value }) => {
   const handleSubmit = ({ value }, { resetForm }) => {
     onSubmit(value.trim());
     resetForm();
   };
   return (
     <Formik
-      initialValues={{ value: '' }}
+      initialValues={{ value }}
       onSubmit={handleSubmit}
       validationSchema={schema}
     >
