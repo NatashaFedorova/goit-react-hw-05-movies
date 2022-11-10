@@ -15,13 +15,12 @@ const MovieDetails = () => {
     const getFilmByRequest = async () => {
       try {
         const response = await fetchFilmsByRequest(movieId);
-        console.log(response.data);
-        const film = response.data;
-        if (!film) {
+        console.log(response.data['original_title']);
+        if (!response.data) {
           toast.error('Oops, something went wrong, be kind, change your side');
           return;
         }
-        setFilm(film);
+        setFilm(response.data);
       } catch {
         toast.error('Oops, something went wrong, be kind, change your side');
       } finally {
@@ -30,11 +29,14 @@ const MovieDetails = () => {
     };
     getFilmByRequest();
   }, [movieId]);
+  console.log(film);
+
   return (
     <>
       {loading && <p>loading...</p>}
       <h1>
-        Title <span>(2000)</span>
+        {film['original_title']}
+        <span>({film['release_date']})</span>
       </h1>
       <p>User score: ... %</p>
       <p>Overview</p>

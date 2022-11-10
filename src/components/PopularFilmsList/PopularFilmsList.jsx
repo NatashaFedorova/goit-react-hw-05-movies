@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
 import { fetchPopularFilms } from 'api';
 import { List, Item, StyledLink } from './PopularFilmsList.styled';
 
 const PopularFilmsList = () => {
   const [popularFilms, setPopularFilms] = useState([]);
-  const [selectedFilm, setSelectedFilm] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {

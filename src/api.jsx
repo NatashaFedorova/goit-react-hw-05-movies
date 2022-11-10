@@ -1,5 +1,3 @@
-// https://api.themoviedb.org/3/movie/550?api_key=126c98610b953996e384874a869a831e
-
 import axios from 'axios';
 
 const KEY = '126c98610b953996e384874a869a831e';
