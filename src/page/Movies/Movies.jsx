@@ -1,4 +1,4 @@
-import SearchForMoviesByTitle from 'components/SearchForMoviesByTitle';
+import SearchForMoviesByTitle from 'components/SearchFormMoviesByTitle';
 import { Box } from './Movies.styled';
 
 const Movies = () => {

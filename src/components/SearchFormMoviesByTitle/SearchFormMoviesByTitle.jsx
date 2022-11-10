@@ -5,7 +5,7 @@ import SearchForm from 'components/SearchForm';
 import MoviesByTitle from 'components/MoviesByTitle';
 import { Loader } from 'components/constans/BaseStyle.styled';
 
-const SearchForMoviesByTitle = () => {
+const SearchFormMoviesByTitle = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const value = searchParams.get('value');
@@ -39,4 +39,4 @@ const SearchForMoviesByTitle = () => {
   );
 };
 
-export default SearchForMoviesByTitle;
+export default SearchFormMoviesByTitle;
