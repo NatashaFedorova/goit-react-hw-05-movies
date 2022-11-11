@@ -1,8 +1,6 @@
-import { useLocation } from 'react-router-dom';
 import { Box, Title, List, Item, StyledLink } from './AdditionalInfo.styled';
 
 const AdditionalInfo = ({ backLinkHref, movieId }) => {
-  // const location = useLocation();
   return (
     <Box>
       <Title>Additional information</Title>
