@@ -1,6 +1,6 @@
 import { Box, Title, List, Item, StyledLink } from './AdditionalInfo.styled';
 
-const AdditionalInfo = ({ id }) => {
+const AdditionalInfo = () => {
   return (
     <Box>
       <Title>Additional information</Title>
